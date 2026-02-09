@@ -5,20 +5,6 @@ This module builds a FAISS vector store from a predefined catalogue of
 job-role descriptions, then performs semantic similarity search to find
 the best-matching roles for a given CV.
 
-Workflow position:  **STEP 4 — MATCH**
-    load → chunk → extract → match → recommend
-                             ^^^^^
-
-LangChain Components:
-    - ``FAISS``              – Facebook AI Similarity Search, an efficient
-                               library for nearest-neighbour lookup on dense
-                               vectors.  LangChain wraps it so we can index
-                               and query with a single API call.
-    - ``OpenAIEmbeddings``   – Converts text into 1536-dim vectors that
-                               capture semantic meaning (``text-embedding-3-small``).
-    - ``Document``           – LangChain's container for text + metadata,
-                               required by FAISS ingestion.
-
 How FAISS works (conceptual):
     1. Each job description is turned into a high-dimensional vector by
        the embedding model.

@@ -4,6 +4,9 @@ LangChain Agent Service — ReAct Agent with Custom Tools.
 This module sets up a **LangChain Agent** that can answer free-form
 questions about a CV by autonomously choosing which tools to call.
 
+Author: brandyxie
+Email:  brandyxie100@qq.com
+
 What is a LangChain Agent?
     An agent is an LLM that can **decide** which actions (tools) to take,
     in what order, and how to combine the results.  Unlike a static chain

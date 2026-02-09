@@ -1,4 +1,4 @@
-# Analysis_CV_V2 — AI-Powered CV Analysis with LangChain & Claude Sonnet
+# AI-Powered CV Analysis with LangChain & Claude Sonnet
 
 A production-ready FastAPI application that analyses CVs using **LangChain**, **Anthropic Claude Sonnet**, and **FAISS** vector search. Built with OOP design patterns (Singleton, Factory) and containerised with Docker.
 
@@ -59,21 +59,21 @@ A production-ready FastAPI application that analyses CVs using **LangChain**, **
 =======
 =======
 >>>>>>> Stashed changes
-│  ┌──────────┐  ┌──────────────┐  ┌──────────────────────────┐   │
-│  │  /upload  │  │ /analyze/{id}│  │ /agent/query             │   │
-│  └─────┬────┘  └──────┬───────┘  └────────────┬─────────────┘   │
-│        │               │                       │                 │
-│        ▼               ▼                       ▼                 │
+│  ┌──────────┐  ┌──────────────┐  ┌──────────────────────────┐    │
+│  │  /upload │  │ /analyze/{id}│  │ /agent/query             │    │
+│  └─────┬────┘  └──────┬───────┘  └────────────┬─────────────┘    │
+│        │              │                       │                  │
+│        ▼              ▼                       ▼                  │
 │  ┌─────────────────────────────┐  ┌──────────────────────────┐   │
-│  │      CVAnalyzer             │  │    CVAgentService         │   │
-│  │    (Orchestrator)           │  │   (LangGraph ReAct Agent) │   │
-│  │                             │  │                           │   │
-│  │  1. DocumentLoaderFactory   │  │  Tools:                   │   │
-│  │     (Factory Pattern)       │  │  - get_cv_full_text       │   │
-│  │  2. TextChunker             │  │  - get_cv_chunks          │   │
-│  │     (LangChain Splitter)    │  │  - search_cv_section      │   │
-│  │  3. CVExtractorService      │  │  - analyze_cv_formatting  │   │
-│  │     (Structured Output)     │  │                           │   │
+│  │      CVAnalyzer             │  │    CVAgentService        │   │
+│  │    (Orchestrator)           │  │   (LangGraph ReAct Agent)│   │
+│  │                             │  │                          │   │
+│  │  1. DocumentLoaderFactory   │  │  Tools:                  │   │
+│  │     (Factory Pattern)       │  │  - get_cv_full_text      │   │
+│  │  2. TextChunker             │  │  - get_cv_chunks         │   │
+│  │     (LangChain Splitter)    │  │  - search_cv_section     │   │
+│  │  3. CVExtractorService      │  │  - analyze_cv_formatting │   │
+│  │     (Structured Output)     │  │                          │   │
 <<<<<<< Updated upstream
 >>>>>>> Stashed changes
 =======
@@ -98,7 +98,7 @@ A production-ready FastAPI application that analyses CVs using **LangChain**, **
 ## Project Structure
 
 ```
-Analysis_CV_V2/
+AI-PoweredCVAnalysis/
 ├── app/
 │   ├── __init__.py              # Package metadata & version
 │   ├── config.py                # Singleton config manager
@@ -376,7 +376,7 @@ The `CVAnalyzer` class orchestrates all stages in sequence via its `analyze()` m
 
 ```bash
 # 1. Navigate to the project
-cd Analysis_CV_V2
+cd AI-PoweredCVAnalysis
 
 # 2. Create virtual environment
 python -m venv venv

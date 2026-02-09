@@ -1,6 +1,9 @@
 """
 Pydantic Schemas for request / response data validation.
 
+Author: brandyxie
+Email:  brandyxie100@qq.com
+
 These models enforce strict type checking on every API boundary,
 ensuring that the FastAPI endpoints receive well-formed data and
 return predictable JSON structures to the client.

@@ -1,6 +1,9 @@
 """
 FastAPI Application — CV Analysis API.
 
+Author: brandyxie
+Email:  brandyxie100@qq.com
+
 This is the entry-point for the web application.  It exposes RESTful
 endpoints for:
     1. ``POST /upload``          – Upload a CV file (PDF / DOCX / TXT).

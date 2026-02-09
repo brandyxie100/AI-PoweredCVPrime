@@ -2,6 +2,9 @@
 Pytest configuration and shared fixtures.
 
 Sets PYTHONPATH so that ``app`` package is importable from tests.
+
+Author: brandyxie
+Email:  brandyxie100@qq.com
 """
 
 from __future__ import annotations

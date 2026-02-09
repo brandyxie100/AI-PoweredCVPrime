@@ -3,6 +3,9 @@ Integration Tests for the CV Analysis Pipeline.
 
 Tests cover:
     - CV upload via the FastAPI endpoint.
+
+Author: brandyxie
+Email:  brandyxie100@qq.com
     - Text chunking.
     - Health check endpoint.
     - Config singleton behaviour.

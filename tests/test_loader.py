@@ -3,6 +3,9 @@ Unit Tests for Document Loader (Factory Pattern).
 
 Tests cover:
     - Factory correctly selects the right loader.
+
+Author: brandyxie
+Email:  brandyxie100@qq.com
     - TxtLoader reads plain text files.
     - Unsupported formats raise ValueError.
     - Missing files raise FileNotFoundError.
