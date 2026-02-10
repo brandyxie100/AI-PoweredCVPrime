@@ -16,7 +16,8 @@ langchain-text-splitters>=0.3.0
 
 # --- LangChain Model Providers ---
 langchain-anthropic>=0.3.0     # ChatAnthropic (Claude Sonnet)
-langchain-openai>=0.3.0        # OpenAIEmbeddings
+langchain-huggingface>=0.1.0   # HuggingFace local embeddings (no API key needed)
+sentence-transformers>=3.0.0   # Local embedding models
 
 # --- LangGraph (Agent framework) ---
 langgraph>=0.2.0

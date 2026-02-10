@@ -25,7 +25,7 @@ from typing import ClassVar
 
 from dotenv import load_dotenv
 from langchain_anthropic import ChatAnthropic
-from langchain_openai import OpenAIEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 
 # ---------------------------------------------------------------------------
 # Load .env file so secrets never appear in source code
@@ -41,7 +41,6 @@ class AppConfig:
 
     Attributes:
         anthropic_api_key : str  – Anthropic API key (from ANTHROPIC_API_KEY).
-        openai_api_key    : str  – OpenAI API key for embeddings (from OPENAI_API_KEY).
         model_name        : str  – Claude model identifier (default: claude-sonnet-4-20250514).
         temperature       : float – LLM creativity parameter (default: 0.3).
         chunk_size        : int   – Characters per text chunk (default: 1000).
@@ -74,7 +73,6 @@ class AppConfig:
 
         # ---- API keys (loaded from .env) ----
         self.anthropic_api_key: str = os.getenv("ANTHROPIC_API_KEY", "")
-        self.openai_api_key: str = os.getenv("OPENAI_API_KEY", "")
 
         # ---- LLM settings ----
         self.model_name: str = os.getenv("MODEL_NAME", "claude-sonnet-4-20250514")
@@ -113,16 +111,16 @@ class AppConfig:
             max_tokens=self.max_tokens,
         )
 
-    def get_embeddings(self) -> OpenAIEmbeddings:
+    def get_embeddings(self) -> HuggingFaceEmbeddings:
         """
-        Return a pre-configured OpenAI embeddings model.
+        Return a pre-configured HuggingFace embeddings model.
 
-        Used by the FAISS vector store to embed CV text chunks
-        and job-role descriptions for semantic similarity matching.
+        Uses the ``all-MiniLM-L6-v2`` model which runs **locally** —
+        no API key required.  It produces 384-dim vectors suitable
+        for FAISS similarity search.
         """
-        return OpenAIEmbeddings(
-            openai_api_key=self.openai_api_key,
-            model="text-embedding-3-small",
+        return HuggingFaceEmbeddings(
+            model_name="all-MiniLM-L6-v2",
         )
 
     # ------------------------------------------------------------------
