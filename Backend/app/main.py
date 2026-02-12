@@ -102,10 +102,15 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-# CORS — allow all origins in development (restrict in production)
+# CORS — allow Frontend origins (localhost dev + Docker internal)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "http://localhost:3000",       # Next.js dev server
+        "http://frontend:3000",        # Docker internal network
+        "http://127.0.0.1:3000",
+        "*",                           # Fallback for development
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
