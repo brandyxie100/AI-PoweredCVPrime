@@ -1,32 +1,32 @@
 # ─────────────────────────────────────────────────────────────
-# docker-compose.yml — CV Analysis API
+# docker-compose.yml — Full Stack (Backend + Frontend)
 # ─────────────────────────────────────────────────────────────
 # Usage:
-#   docker compose up --build        # Build and start
+#   docker compose up --build        # Build and start both services
 #   docker compose up -d             # Start in background
 #   docker compose down              # Stop and remove containers
-#   docker compose logs -f api       # Follow logs
+#   docker compose logs -f backend   # Follow backend logs
+#   docker compose logs -f frontend  # Follow frontend logs
 #
 # Before running:
-#   1. Copy .env.example to .env
-#   2. Fill in your ANTHROPIC_API_KEY and OPENAI_API_KEY
+#   1. Copy Backend/.env.example to Backend/.env and add API keys
 # ─────────────────────────────────────────────────────────────
 
 services:
-  api:
+  # ── FastAPI Backend (Python, LangChain, Claude) ──
+  backend:
     build:
-      context: .
+      context: ./Backend
       dockerfile: Dockerfile
-    container_name: cv-analysis-api
+    container_name: cv-analysis-backend
     ports:
       - "8000:8000"
     env_file:
-      - .env
+      - ./Backend/.env
     environment:
       - UPLOAD_DIR=/tmp/cv_uploads
       - LOG_LEVEL=INFO
     volumes:
-      # Mount a volume for uploaded CVs (persists across restarts)
       - cv_uploads:/tmp/cv_uploads
     restart: unless-stopped
     healthcheck:
@@ -34,7 +34,27 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
-      start_period: 15s
+      start_period: 30s
+
+  # ── Next.js Frontend (TypeScript, Tailwind) ──
+  frontend:
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+      args:
+        # NEXT_PUBLIC_ vars are baked into JS at build time and run in
+        # the USER'S BROWSER, so the URL must be reachable from the host
+        # machine — not the Docker internal network.
+        NEXT_PUBLIC_API_URL: http://localhost:8000
+    container_name: cv-analysis-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
 
 volumes:
   cv_uploads:
