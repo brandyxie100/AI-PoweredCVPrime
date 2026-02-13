@@ -39,8 +39,6 @@ A production-ready FastAPI application that analyses CVs using **LangChain**, **
 ┌──────────────────────────────────────────────────────────────────┐
 │                        FastAPI Application                       │
 │                         (app/main.py)                            │
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 │  ┌──────────┐  ┌──────────────┐  ┌──────────────────────────┐    │
 │  │  /upload │  │ /analyze/{id}│  │ /agent/query             │    │
 │  └─────┬────┘  └──────┬───────┘  └────────────┬─────────────┘    │
@@ -56,28 +54,6 @@ A production-ready FastAPI application that analyses CVs using **LangChain**, **
 │  │     (LangChain Splitter)    │  │  - search_cv_section     │   │
 │  │  3. CVExtractorService      │  │  - analyze_cv_formatting │   │
 │  │     (Structured Output)     │  │                          │   │
-=======
-=======
->>>>>>> Stashed changes
-│  ┌──────────┐  ┌──────────────┐  ┌──────────────────────────┐   │
-│  │  /upload  │  │ /analyze/{id}│  │ /agent/query             │   │
-│  └─────┬────┘  └──────┬───────┘  └────────────┬─────────────┘   │
-│        │               │                       │                 │
-│        ▼               ▼                       ▼                 │
-│  ┌─────────────────────────────┐  ┌──────────────────────────┐   │
-│  │      CVAnalyzer             │  │    CVAgentService         │   │
-│  │    (Orchestrator)           │  │   (LangGraph ReAct Agent) │   │
-│  │                             │  │                           │   │
-│  │  1. DocumentLoaderFactory   │  │  Tools:                   │   │
-│  │     (Factory Pattern)       │  │  - get_cv_full_text       │   │
-│  │  2. TextChunker             │  │  - get_cv_chunks          │   │
-│  │     (LangChain Splitter)    │  │  - search_cv_section      │   │
-│  │  3. CVExtractorService      │  │  - analyze_cv_formatting  │   │
-│  │     (Structured Output)     │  │                           │   │
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 │  │  4. JobMatcherService       │  └──────────────────────────┘   │
 │  │     (FAISS Vector Store)    │                                 │
 │  │  5. RecommenderService      │                                 │
@@ -123,8 +99,6 @@ AIPoweredCVAnalysis/
 │   ├── conftest.py              # Pytest configuration
 │   ├── test_loader.py           # Document loader unit tests
 │   └── test_analyzer.py         # Pipeline & endpoint tests
-├── sample_cvs/
-│   └── sample_cv.txt            # Example CV for testing
 ├── .env.example                 # Template for environment variables
 ├── .gitignore
 ├── Dockerfile                   # Multi-stage Docker build
